@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 public class GetInfoDetailsService {
     private final FeedRepository feedRepository;
 
-    public GetInfoDetailsResponse getDetails(Long feed_id) {
+    public GetInfoDetailsResponse getDetails(Long feedId) {
 
-        Feed feed = feedRepository.findByFeedId(feed_id);
+        Feed feed = feedRepository.findByFeedId(feedId);
 
         return new GetInfoDetailsResponse(
                 feed.getName(),
