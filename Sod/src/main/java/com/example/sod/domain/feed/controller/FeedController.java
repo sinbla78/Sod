@@ -33,7 +33,7 @@ public class FeedController {
         deleteFeedService.execute(feedId);
     }
 
-    //일기 수장
+    //일기 수정
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping("/{feed-id}")
     public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestBody @Valid UpdateFeedRequest updateFeedRequest) {
