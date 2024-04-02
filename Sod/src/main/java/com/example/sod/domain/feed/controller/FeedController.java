@@ -2,7 +2,9 @@ package com.example.sod.domain.feed.controller;
 
 import com.example.sod.domain.feed.controller.dto.request.NoticeFeedRequest;
 import com.example.sod.domain.feed.controller.dto.request.UpdateFeedRequest;
+import com.example.sod.domain.feed.controller.dto.response.GetInfoDetailsResponse;
 import com.example.sod.domain.feed.service.DeleteFeedService;
+import com.example.sod.domain.feed.service.GetInfoDetailsService;
 import com.example.sod.domain.feed.service.NoticeFeedService;
 import com.example.sod.domain.feed.service.UpdateFeedService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ public class FeedController {
     private final NoticeFeedService noticeFeedService;
     private final DeleteFeedService deleteFeedService;
     private final UpdateFeedService updateFeedService;
+    private final GetInfoDetailsService getInfoDetailsService;
     //일기 작성
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -38,5 +41,10 @@ public class FeedController {
     @PatchMapping("/{feed-id}")
     public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestBody @Valid UpdateFeedRequest updateFeedRequest) {
         updateFeedService.execute(feedId, updateFeedRequest);
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/details/{feed-id}")
+    public GetInfoDetailsResponse getDetails(@PathVariable("feed-id") Long feedId) {
+        return getInfoDetailsService.getDetails(feedId);
     }
 }
