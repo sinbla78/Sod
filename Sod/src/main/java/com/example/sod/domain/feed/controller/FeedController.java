@@ -42,6 +42,7 @@ public class FeedController {
     public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestBody @Valid UpdateFeedRequest updateFeedRequest) {
         updateFeedService.execute(feedId, updateFeedRequest);
     }
+    //일기 자세히 보기
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/details/{feed-id}")
     public GetInfoDetailsResponse getDetails(@PathVariable("feed-id") Long feedId) {
