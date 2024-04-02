@@ -19,21 +19,23 @@ public class FeedController {
     private final NoticeFeedService noticeFeedService;
     private final DeleteFeedService deleteFeedService;
     private final UpdateFeedService updateFeedService;
-
+    //일기 작성
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void noticeFeed(@RequestBody @Valid NoticeFeedRequest noticeFeedRequest) {
         noticeFeedService.execute(noticeFeedRequest);
     }
 
+    //일기 삭제
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{feed-id}")
     public void deleteFeed(@PathVariable("feed-id") Long feedId) {
         deleteFeedService.execute(feedId);
     }
 
+    //일기 수장
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/{feed-id}")
+    @PatchMapping("/{feed-id}")
     public void updateFeed(@PathVariable("feed-id") Long feedId, @RequestBody @Valid UpdateFeedRequest updateFeedRequest) {
         updateFeedService.execute(feedId, updateFeedRequest);
     }
