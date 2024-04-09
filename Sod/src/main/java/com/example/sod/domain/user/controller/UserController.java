@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping
+    @PatchMapping
     public void updateUser(@RequestBody @Valid UpdateInfoRequest updateInfoRequest) {
         updateInfoService.execute(updateInfoRequest);
     }

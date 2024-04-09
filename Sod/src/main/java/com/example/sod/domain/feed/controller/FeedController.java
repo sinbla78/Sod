@@ -2,7 +2,7 @@ package com.example.sod.domain.feed.controller;
 
 import com.example.sod.domain.feed.controller.dto.request.NoticeFeedRequest;
 import com.example.sod.domain.feed.controller.dto.request.UpdateFeedRequest;
-import com.example.sod.domain.feed.controller.dto.response.FeedResponse;
+import com.example.sod.domain.feed.controller.dto.response.FeedListResponse;
 import com.example.sod.domain.feed.controller.dto.response.GetInfoDetailsResponse;
 import com.example.sod.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class FeedController {
     private final DeleteFeedService deleteFeedService;
     private final UpdateFeedService updateFeedService;
     private final GetInfoDetailsService getInfoDetailsService;
-    private final FeedService feedService;
+    private final FeedListService feedService;
     //일기 작성
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -50,7 +50,7 @@ public class FeedController {
     }
     //일기 목록
     @GetMapping
-    public List<FeedResponse> getFeedList() {
+    public List<FeedListResponse> getFeedList() {
         return feedService.getFeedList();
     }
 }
