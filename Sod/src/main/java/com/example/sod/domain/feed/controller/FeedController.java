@@ -2,16 +2,15 @@ package com.example.sod.domain.feed.controller;
 
 import com.example.sod.domain.feed.controller.dto.request.NoticeFeedRequest;
 import com.example.sod.domain.feed.controller.dto.request.UpdateFeedRequest;
+import com.example.sod.domain.feed.controller.dto.response.FeedResponse;
 import com.example.sod.domain.feed.controller.dto.response.GetInfoDetailsResponse;
-import com.example.sod.domain.feed.service.DeleteFeedService;
-import com.example.sod.domain.feed.service.GetInfoDetailsService;
-import com.example.sod.domain.feed.service.NoticeFeedService;
-import com.example.sod.domain.feed.service.UpdateFeedService;
+import com.example.sod.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/feed")
@@ -22,6 +21,7 @@ public class FeedController {
     private final DeleteFeedService deleteFeedService;
     private final UpdateFeedService updateFeedService;
     private final GetInfoDetailsService getInfoDetailsService;
+    private final FeedService feedService;
     //일기 작성
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -47,5 +47,10 @@ public class FeedController {
     @GetMapping("/details/{feed-id}")
     public GetInfoDetailsResponse getDetails(@PathVariable("feed-id") Long feedId) {
         return getInfoDetailsService.getDetails(feedId);
+    }
+    //일기 목록
+    @GetMapping
+    public List<FeedResponse> getFeedList() {
+        return feedService.getFeedList();
     }
 }
