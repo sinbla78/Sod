@@ -9,6 +9,6 @@ public class FeedNotFoundException extends CustomException {
             new FeedNotFoundException();
 
     private FeedNotFoundException() {
-        super(ErrorCode.FEED_NOT_FOUUND);
+        super(ErrorCode.FEED_NOT_FOUND);
     }
 }

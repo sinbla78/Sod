@@ -14,5 +14,4 @@ public class FeedListResponse {
     private String weather;
     private String name;
     private String day;
-
 }
