@@ -21,7 +21,8 @@ public class FeedController {
     private final DeleteFeedService deleteFeedService;
     private final UpdateFeedService updateFeedService;
     private final GetInfoDetailsService getInfoDetailsService;
-    private final FeedListService feedService;
+    private final FeedListService feedListService;
+
     //일기 작성
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -48,9 +49,10 @@ public class FeedController {
     public GetInfoDetailsResponse getDetails(@PathVariable("feed-id") Long feedId) {
         return getInfoDetailsService.getDetails(feedId);
     }
+
     //일기 목록
     @GetMapping
     public List<FeedListResponse> getFeedList() {
-        return feedService.getFeedList();
+        return feedListService.getFeedList();
     }
 }
