@@ -21,9 +21,10 @@ public class NoticeFeedService {
         User user = userFacade.getCurrentUser();
 
         String filteredContent = filterContent(noticeFeedRequest.getContent());
+        String filterTitle = filterTitle(noticeFeedRequest.getTitle());
 
         Feed feed = Feed.builder()
-                .title(noticeFeedRequest.getTitle())
+                .title(filterTitle)
                 .content(filteredContent)
                 .name(noticeFeedRequest.getName())
                 .weather(noticeFeedRequest.getWeather())
@@ -36,5 +37,10 @@ public class NoticeFeedService {
     private String filterContent(String content) {
         String filteredContent = content.replaceAll("씨발", "**");
         return filteredContent;
+    }
+
+    private String filterTitle(String title) {
+        String filteredTitle = title.replaceAll("씨발", "**");
+        return  filteredTitle;
     }
 }
