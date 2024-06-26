@@ -34,7 +34,7 @@ public class NoticeFeedService {
     }
 
     private String filterContent(String content) {
-        String filteredContent = content.replaceAll("씨발", "xx");
+        String filteredContent = content.replaceAll("씨발", "**");
         return filteredContent;
     }
 }

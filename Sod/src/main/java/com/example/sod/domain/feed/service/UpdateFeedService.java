@@ -10,6 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 @RequiredArgsConstructor
 @Service
 public class UpdateFeedService {
@@ -19,7 +23,6 @@ public class UpdateFeedService {
 
     @Transactional
     public void execute(Long feedId, UpdateFeedRequest updateFeedRequest) {
-
         User user = userFacade.getCurrentUser();
         Feed feed = feedFacade.getFeedById(feedId);
 
@@ -27,6 +30,21 @@ public class UpdateFeedService {
             throw CannotBeModifiedException.EXCEPTION;
         }
 
-        feed.updateFeed(updateFeedRequest.getTitle(), updateFeedRequest.getContent(), updateFeedRequest.getWeather(), updateFeedRequest.getName(), updateFeedRequest.getDay());
+        // 필터링 및 교체
+        String filteredTitle = filterAndReplace(updateFeedRequest.getTitle());
+        String filteredContent = filterAndReplace(updateFeedRequest.getContent());
+        // 추가 필드들도 필요에 따라 필터링 및 교체
+
+        // 피드 업데이트
+        feed.updateFeed(filteredTitle, filteredContent, updateFeedRequest.getWeather(), updateFeedRequest.getName(), updateFeedRequest.getDay());
+    }
+
+    // 필터링 및 교체 메서드
+    private String filterAndReplace(String text) {
+        // 필터링할 단어
+        String badWord = "씨발";
+        // 필터링 및 교체
+        return text.replaceAll("(?i)\\b" + badWord + "\\b", "**");
     }
 }
+
