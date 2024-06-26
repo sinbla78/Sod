@@ -20,14 +20,21 @@ public class NoticeFeedService {
     public void execute(NoticeFeedRequest noticeFeedRequest) {
         User user = userFacade.getCurrentUser();
 
+        String filteredContent = filterContent(noticeFeedRequest.getContent());
+
         Feed feed = Feed.builder()
                 .title(noticeFeedRequest.getTitle())
-                .content(noticeFeedRequest.getContent())
+                .content(filteredContent)
                 .name(noticeFeedRequest.getName())
                 .weather(noticeFeedRequest.getWeather())
                 .day(noticeFeedRequest.getDay())
                 .user(user)
                 .build();
         feedRepository.save(feed);
+    }
+
+    private String filterContent(String content) {
+        String filteredContent = content.replaceAll("씨발", "xx");
+        return filteredContent;
     }
 }
