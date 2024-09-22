@@ -1,7 +1,9 @@
-package com.example.decofolio.domain.comment.domain;
+package com.example.sod.domain.comment.domain;
 
-import com.example.decofolio.domain.feed.domain.Feed;
-import com.example.decofolio.domain.user.domain.User;
+
+
+import com.example.sod.domain.feed.domain.Feed;
+import com.example.sod.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

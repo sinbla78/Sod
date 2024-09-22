@@ -1,4 +1,4 @@
-package com.example.decofolio.domain.comment.presentation.dto.response;
+package com.example.sod.domain.comment.controller.dto.response;
 
 
 

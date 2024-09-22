@@ -1,4 +1,4 @@
-package com.example.decofolio.domain.comment.presentation.dto.request;
+package com.example.sod.domain.comment.controller.dto.request;
 
 import lombok.Getter;
 

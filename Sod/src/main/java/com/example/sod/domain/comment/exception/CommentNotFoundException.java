@@ -1,7 +1,9 @@
-package com.example.decofolio.domain.comment.exception;
+package com.example.sod.domain.comment.exception;
 
-import com.example.decofolio.global.error.exception.CustomException;
-import com.example.decofolio.global.error.exception.ErrorCode;
+
+import com.example.sod.global.error.exception.CustomException;
+import com.example.sod.global.error.exception.ErrorCode;
+
 public class CommentNotFoundException extends CustomException {
 
     public static final CustomException EXCEPTION =

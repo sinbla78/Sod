@@ -1,14 +1,15 @@
-package com.example.decofolio.domain.comment.service;
+package com.example.sod.domain.comment.service;
 
-import com.example.decofolio.domain.comment.domain.Comment;
-import com.example.decofolio.domain.comment.domain.repository.CommentRepository;
-import com.example.decofolio.domain.comment.presentation.dto.request.CreateCommentRequest;
-import com.example.decofolio.domain.comment.presentation.dto.response.CreateCommentResponse;
-import com.example.decofolio.domain.feed.domain.Feed;
-import com.example.decofolio.domain.feed.domain.repository.FeedRepository;
-import com.example.decofolio.domain.feed.exception.FeedNotFoundException;
-import com.example.decofolio.domain.user.domain.User;
-import com.example.decofolio.domain.user.facade.UserFacade;
+
+import com.example.sod.domain.comment.domain.Comment;
+import com.example.sod.domain.comment.domain.repository.CommentRepository;
+import com.example.sod.domain.comment.controller.dto.request.CreateCommentRequest;
+import com.example.sod.domain.comment.controller.dto.response.CreateCommentResponse;
+import com.example.sod.domain.feed.domain.Feed;
+import com.example.sod.domain.feed.domain.repository.FeedRepository;
+import com.example.sod.domain.feed.exception.FeedNotFoundException;
+import com.example.sod.domain.user.domain.User;
+import com.example.sod.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

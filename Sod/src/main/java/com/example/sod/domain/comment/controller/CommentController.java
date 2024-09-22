@@ -1,9 +1,10 @@
-package com.example.decofolio.domain.comment.presentation;
+package com.example.sod.domain.comment.controller;
 
 
-import com.example.decofolio.domain.comment.presentation.dto.request.CreateCommentRequest;
-import com.example.decofolio.domain.comment.presentation.dto.response.CreateCommentResponse;
-import com.example.decofolio.domain.comment.service.CreateCommentService;
+
+import com.example.sod.domain.comment.controller.dto.request.CreateCommentRequest;
+import com.example.sod.domain.comment.controller.dto.response.CreateCommentResponse;
+import com.example.sod.domain.comment.service.CreateCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
