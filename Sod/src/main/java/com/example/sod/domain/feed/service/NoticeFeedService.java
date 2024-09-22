@@ -35,12 +35,20 @@ public class NoticeFeedService {
     }
 
     private String filterContent(String content) {
-        String filteredContent = content.replaceAll("씨발", "**");
+        String[] badWords = {"씨발", "시발", "ㅅㅂ", "개새", "병신"};
+        String filteredContent = content;
+        for (String word : badWords) {
+            filteredContent = filteredContent.replaceAll(word, "**");
+        }
         return filteredContent;
     }
 
     private String filterTitle(String title) {
-        String filteredTitle = title.replaceAll("씨발", "**");
-        return  filteredTitle;
+        String[] badWords = {"씨발", "시발", "ㅅㅂ", "개새", "병신"};
+        String filteredTitle = title;
+        for (String word : badWords) {
+            filteredTitle = filteredTitle.replaceAll(word, "**");
+        }
+        return filteredTitle;
     }
 }
