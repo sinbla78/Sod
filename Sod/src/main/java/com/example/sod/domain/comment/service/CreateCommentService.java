@@ -37,6 +37,6 @@ public class CreateCommentService {
 
         commentRepository.save(comment);
 
-        return new CreateCommentResponse(comment.getId(), comment.getContent());
+        return new CreateCommentResponse(comment.getId(), comment.getContent(), comment.getCreatedAt());
     }
 }

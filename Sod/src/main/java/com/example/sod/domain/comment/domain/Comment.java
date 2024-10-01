@@ -1,7 +1,5 @@
 package com.example.sod.domain.comment.domain;
 
-
-
 import com.example.sod.domain.feed.domain.Feed;
 import com.example.sod.domain.user.domain.User;
 import lombok.AccessLevel;
@@ -12,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -35,12 +34,21 @@ public class Comment {
     @JoinColumn(name = "feed_id", nullable = false)
     private Feed feed;
 
+    private LocalDateTime createdAt;
 
+    private LocalDateTime updatedAt;
     @Builder
     public Comment(String content, User user, Feed feed) {
         this.content = content;
         this.user = user;
         this.feed = feed;
+        this.createdAt = LocalDateTime.now(); // 댓글 작성 시간 기록
+        this.updatedAt = LocalDateTime.now(); // 댓글 수정 시간 기록 (처음엔 동일하게 설정)
+    }
+
+    public void updateContent(String newContent) {
+        this.content = newContent;
+        this.updatedAt = LocalDateTime.now(); // 수정 시간을 업데이트
     }
 
 
