@@ -12,4 +12,9 @@ public class CommentNotFoundException extends CustomException {
     private CommentNotFoundException() {
         super(ErrorCode.COMMENT_FOT_FOUND);
     }
+
+    public CommentNotFoundException(String message) {
+        super(ErrorCode.COMMENT_FOT_FOUND); 
+    }
 }
+
