@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,6 +26,9 @@ public class User {
     @Column(length = 50, nullable = false)
     private String email;
 
+    @Column(nullable = true)
+    private LocalDateTime lastLoginTime;
+
     @Builder
     private User(String accountId, String password, String email) {
         this.accountId = accountId;
@@ -34,5 +38,9 @@ public class User {
     public void updateUser(String password, String email) {
         this.password = password;
         this.email = email;
+    }
+
+    public void updateLastLoginTime() {
+        this.lastLoginTime = LocalDateTime.now();
     }
 }

@@ -22,16 +22,24 @@ public class SignInService {
 
     @Transactional
     public TokenResponse execute(SignInRequest request) {
+        // 1. 사용자 조회
         User user = userRepository.findByAccountId(request.getAccountId())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
+        // 2. 비밀번호 검증
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMisMatchException.EXCEPTION;
         }
 
+        // 3. 마지막 로그인 시간 갱신
+        user.updateLastLoginTime();  // 마지막 로그인 시간 갱신
+        userRepository.save(user);    // DB에 저장
+
+        // 4. JWT 토큰 생성
         String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId());
         String refreshToken = jwtTokenProvider.generateRefreshToken(request.getAccountId());
 
+        // 5. TokenResponse 반환
         return TokenResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
