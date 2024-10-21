@@ -50,6 +50,11 @@ public class FeedController {
         return getInfoDetailsService.getDetails(feedId);
     }
 
+    @GetMapping("/search")
+    public List<FeedListResponse> searchFeedByTitle(@RequestParam("title") String title) {
+        return feedListService.getFeedListByTitle(title);
+    }
+
     //일기 목록
     @GetMapping
     public List<FeedListResponse> getFeedList() {
