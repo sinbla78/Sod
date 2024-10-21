@@ -40,6 +40,10 @@ public class User {
         this.email = email;
     }
 
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
     public void updateLastLoginTime() {
         this.lastLoginTime = LocalDateTime.now();
     }
