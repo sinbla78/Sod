@@ -51,5 +51,4 @@ public class Comment {
         this.updatedAt = LocalDateTime.now(); // 수정 시간을 업데이트
     }
 
-
 }
